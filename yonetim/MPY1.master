@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MPY1.master.cs" Inherits="yonetim_MPY1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MCY Bilişim Yönetim Paneli</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="css/wysiwyg.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Start -->
+    <link href="themes/blue/styles.css" rel="stylesheet" type="text/css" />
+    <!-- Theme End -->
+    <script type="text/javascript" src="http://dwpe.googlecode.com/svn/trunk/_shared/EnhanceJS/enhance.js"></script>	
+    <script type='text/javascript' src='http://dwpe.googlecode.com/svn/trunk/charting/js/excanvas.js'></script>
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'></script>
+	<script type='text/javascript' src='scripts/jquery.wysiwyg.js'></script>
+    <script type='text/javascript' src='scripts/visualize.jQuery.js'></script>
+    <script type="text/javascript" src='scripts/functions.js'></script>
+</head>
+
+<body id="homepage">
+<form id="form1" runat="server">
+	<div id="header">
+    	<a href="Default.aspx" title="Control Panel"><img src="images/cp_logo.png" alt="Control Panel" class="logo" /></a>
+        <div class="mcylogo">
+            <div style="padding:19px 5px 18px 5px; float:left;">
+            <asp:Label ID="lbl_mcysoft" runat="server" Text="Powered By" CssClass="font"></asp:Label> 
+            </div>
+            <div style="float:right;">
+                <a href="http://www.mcybilisim.com/" target="_blank" title="MCY Bilişim"><img src="images/mcylogo.png" alt="MCY Bilişim" style="border:0" /></a>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Top Breadcrumb Start -->
+    <div id="breadcrumb">
+    	<ul>	
+        	<li><img src="images/icons/icon_breadcrumb.png" alt="Location" /></li>
+        	<li><strong>MCY Panel:</strong></li>
+            <li><a href="#" title="">Site Yönetim</a></li>
+            <li>/</li>
+            <li class="current">İçerik İşlemleri</li>
+        </ul>
+    </div>
+    <!-- Top Breadcrumb End -->
+     
+    <!-- Right Side/Main Content Start -->
+    <div id="rightside">
+        <asp:ContentPlaceHolder ID="CPH_Body" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <div id="footer">
+        	&copy; Copyright 2011 MCY Information Technologies
+        </div>
+    </div>
+
+    
+        <!-- Left Dark Bar Start -->
+    <div id="leftside">
+    	<div class="user">
+        	<img src="images/avatar.png" width="44" height="44" class="hoverimg" alt="Avatar" />
+            <p>Oturumu açan:</p>
+            <p class="username"><asp:Label ID="lbl_kullaniciAdi" runat="server" Text=""></asp:Label></p>
+            <p class="userbtn"><a href="#" title="">Hesabım</a></p>
+            <p class="userbtn"><a href="Logout.aspx" title="">Çıkış</a></p>
+        </div>
+        <div class="notifications">
+        	<p class="notifycount"><a href="" title="" class="notifypop">
+                <asp:Label ID="lbl_okunmamisBildirimAdedi" runat="server" Text=""></asp:Label></a></p>
+            <p><a href="" title="" class="notifypop">Yeni Bildirimler</a></p>
+            <p class="smltxt">(Bildirim detayları için tıklayın)</p>
+        </div>
+        
+        <ul id="nav">
+        	<li>
+                <ul class="navigation">
+                    <li class="heading selected">mcybilisim.com</li>
+                </ul>
+            </li>
+
+            <li><a class="expanded heading">Site Yönetim</a>
+                <ul class="navigation">
+                    <li><a href="#" title="">Hakkımızda</a></li>
+                    <li><a href="#" title="">Hizmetlerimiz</a></li>
+                    <li><a href="#" title="">Destek</a></li>
+                    <li><a href="#" title="">Kategori</a></li>
+                    <li><a href="Loading.aspx?url=IcerikYonetimi.aspx" title="">Hizmet Sayfa İçeriği</a></li>
+                </ul>
+            </li>  
+             
+            <li>
+                <a class="collapsed heading">Post İşlemleri</a>
+                 <ul class="navigation">
+                    <li><a href="#" title="">Toplu SMS Gönderimi</a></li>
+                    <li><a href="#" title="">Toplu E-Posta Gönderimi</a></li>
+                    <li><a href="#" title="">Kişiler</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a class="collapsed heading">Kullanıcı Yönetimi</a>
+                 <ul class="navigation">
+                    <li><a href="#" title="">Kullanıcı İşlemleri</a></li>
+                </ul>
+            </li>
+         
+        </ul>
+    </div>
+    <!-- Left Dark Bar End --> 
+    
+    <!-- Notifications Box/Pop-Up Start --> 
+    <div id="notificationsbox">
+        <h4>Yeni Bildirimler</h4>
+        <ul>
+            <asp:Repeater ID="Repeater1" runat="server">
+            <ItemTemplate>
+            <li>
+            	<a href="#" title=""><img src="images/icons/icon_square_close.png" alt="Close" class="closenot" /></a>
+            	<h5><a href="<%# Eval("CPB_LINK")%>" target="_blank" title="MCY Bilişim Kampanyası"><%# Eval("CPB_BASLIK")%></a></h5>
+                <p><%# Eval("CPB_ACIKLAMA_KISA")%> - <%# Eval("CPB_TARIH")%></p>
+            </li>
+            </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+        <p class="loadmore"><a href="#" title="">Geçmiş kampanyalar</a></p>
+    </div>
+    <!-- Notifications Box/Pop-Up End --> 
+    
+
+    
+    <!--[if IE 6]>
+    <script type='text/javascript' src='scripts/png_fix.js'></script>
+    <script type='text/javascript'>
+      DD_belatedPNG.fix('img, .notifycount, .selected');
+    </script>
+    <![endif]--> 
+    </form>
+</body>
+
+</html>

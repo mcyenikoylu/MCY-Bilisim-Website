@@ -1,0 +1,43 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MP1.master.cs" Inherits="MP1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>MCY Bilişim Teknolojileri</title>
+    <asp:ContentPlaceHolder id="CPH_Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+<div class="main">
+  <div class="blok_header">
+    <div class="top">
+    <div class="top_text">Telefonda ücretsiz destek için bizi <a href="#">(0212) 876 45 55</a> numaralı hattan arayabilirsiniz.</div>
+    <div class="top_text2"> <a href="UlasimKroki.aspx">Ulaşım &amp; Kroki</a> | <a href="BankaBilgileri.aspx">Banka Bilgilerimiz</a> | <a href="sitemap.xml">Site Haritası &amp; Sitemap</a> </div>
+    <div class="clr"></div>
+    </div>
+    <div class="header">
+      <div class="logo"> <a href="Default.aspx"><img src="images/logo.png" width="350" height="120" border="0" alt="mcy logo" class="one" /></a> </div>
+      <div class="partner">
+            <div class="plogo"><a href="#" target="_blank"><img src="images/partner_ibm.png" alt="IBM Business Partner" /></a></div>
+            <div class="plogo"><a href="docs/META_Registered_Partner_Certification.pdf" target="_blank"><img src="images/partner_dell.png" alt="DELL Partner Direct" /></a></div>
+            <div class="plogo"><a href="#" target="_blank"><img src="images/partner_mpn.png" alt="Microsoft Partner Network" /></a></div>
+      </div>
+      <div class="clr"></div>
+        <asp:ContentPlaceHolder ID="CPH_Menu" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="clr"></div>
+  </div>
+  <div class="clr"></div>
+    <asp:ContentPlaceHolder ID="CPH_Slide" runat="server">
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="CPH_Body" runat="server">
+    </asp:ContentPlaceHolder>
+</div>
+    <asp:ContentPlaceHolder ID="CPH_FBG" runat="server">
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="CPH_Footer" runat="server">
+    </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
